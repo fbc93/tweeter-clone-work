@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id         Int          @id @default(autoincrement())
+  email      String       @unique
+  nickname   String       @unique
+  avatar     String?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  tweets     Tweet[]
+  favs       Fav[]
+  replyTweet ReplyTweet[]
+}
+
+model Tweet {
+  id         Int          @id @default(autoincrement())
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  imageKey   String?
+  text       String?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  favs       Fav[]
+  replyTweet ReplyTweet[]
+}
+
+model Fav {
+  id           Int        @id @default(autoincrement())
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int
+  tweet        Tweet      @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+  tweetId      Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  ReplyTweet   ReplyTweet @relation(fields: [replyTweetId], references: [id])
+  replyTweetId Int
+}
+
+model ReplyTweet {
+  id         Int      @id @default(autoincrement())
+  replytweet String
+  imageKey   String?
+  text       String?
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  tweet      Tweet    @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+  tweetId    Int
+  favs       Fav[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
