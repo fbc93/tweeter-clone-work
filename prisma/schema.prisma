@@ -12,51 +12,59 @@ datasource db {
 }
 
 model User {
-  id         Int          @id @default(autoincrement())
-  email      String       @unique
-  nickname   String       @unique
-  avatar     String?
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  tweets     Tweet[]
-  favs       Fav[]
-  replyTweet ReplyTweet[]
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  nickname  String   @default("익명의 회원")
+  avatar    String   @default("johnwick")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+  likes     Like[]
+  Reply     Reply[]
 }
 
-model Tweet {
-  id         Int          @id @default(autoincrement())
-  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId     Int
-  imageKey   String?
-  text       String?
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  favs       Fav[]
-  replyTweet ReplyTweet[]
+model Post {
+  id        Int      @id @default(autoincrement())
+  content   String
+  image     String   @default("")
+  youtube   String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  likes     Like[]
+  Reply     Reply[]
+
+  @@index([authorId])
 }
 
-model Fav {
-  id           Int        @id @default(autoincrement())
-  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId       Int
-  tweet        Tweet      @relation(fields: [tweetId], references: [id], onDelete: Cascade)
-  tweetId      Int
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  ReplyTweet   ReplyTweet @relation(fields: [replyTweetId], references: [id])
-  replyTweetId Int
+model Like {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  postId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  Reply     Reply[]
+
+  @@index([userId])
+  @@index([postId])
 }
 
-model ReplyTweet {
-  id         Int      @id @default(autoincrement())
-  replytweet String
-  imageKey   String?
-  text       String?
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId     Int
-  tweet      Tweet    @relation(fields: [tweetId], references: [id], onDelete: Cascade)
-  tweetId    Int
-  favs       Fav[]
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+model Reply {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  postId    Int
+  likeId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  likes     Like     @relation(fields: [likeId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([postId])
+  @@index([likeId])
 }
