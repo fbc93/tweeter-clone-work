@@ -11,6 +11,9 @@ declare module "iron-session" {
 const cookieOptions = {
   cookieName:"shareMovie",
   password:"CKRz2gPkDxgdM3J6xvvos3my6WtYtApW",
+  cookieOptions : {
+    secure : false,
+  }
 };
 
 const withApiSession = (fn:any) => {
