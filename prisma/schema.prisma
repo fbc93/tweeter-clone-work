@@ -15,7 +15,7 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   password  String
-  nickname  String   @default("익명의 회원")
+  nickname  String   @unique
   avatar    String   @default("johnwick")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
