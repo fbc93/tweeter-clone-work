@@ -16,12 +16,32 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@src/*":["src/*"],
-      "@libs/*":["libs/*"],
-      "@components/*":["components/*"],
-      "@pages/*":["pages/*"],
+      "@src/*":[
+        "src/*"
+      ],
+      "@libs/*":[
+        "libs/*"
+      ],
+      "@components/*":[
+        "components/*"
+      ],
+      "@pages/*":[
+        "pages/*"
+      ],
+      "@public/*":[
+        "public/*"
+      ],
+      "@avatar/*":[
+        "public/images/avatar/*"
+      ],
     }
   },
-  "include": ["next-env.d.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+    ],
+  "exclude": [
+    "node_modules"
+  ]
 }

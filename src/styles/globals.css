@@ -2,4 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Pacifico';
+  src: url('../../public/fonts/Pacifico-Regular.ttf');
+}
 
+body {
+  background-color: rgb(20,20,20);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
