@@ -66,7 +66,7 @@ const Login: NextPage = () => {
           {data?.error?.type === "password" && <ValidationText content={data?.error?.message} />}
 
         </div>
-        <SubmitButton content={isLoading ? "로그인 중..." : "로그인"} />
+        <SubmitButton content={isLoading ? "로그인 중..." : "로그인"} loading={isLoading} />
       </form>
       <div>
         <ContentBox

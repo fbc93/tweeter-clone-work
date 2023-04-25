@@ -1,21 +1,24 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface NavbarItemProps {
   link?: string;
   SvgPath: string;
   content: string;
   onClick?: (event: any) => void;
+  activeStyle?: string;
 }
 
 const NavbarItem = ({
   link,
   SvgPath,
   content,
-  onClick
+  onClick,
+  activeStyle
 }: NavbarItemProps) => {
 
   return (
-    <li className="mx-3 hover:text-accentFirst">
+    <li className={`mx-3 ${activeStyle}`}>
       <Link href={link ? link : ""} onClick={onClick}>
         <svg
           className="w-5 h-5 mx-auto"
