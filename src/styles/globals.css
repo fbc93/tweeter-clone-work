@@ -16,6 +16,10 @@ input[type="radio"]:disabled {
   background-color: gray;
 }
 
+form input::file-selector-button {
+  display: none;
+}
+
 #__next {
   min-height: 100vh;
   overflow: hidden;
