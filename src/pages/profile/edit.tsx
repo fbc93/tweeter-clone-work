@@ -1,4 +1,4 @@
-import Avatar from "@src/components/editProfile/avatar";
+import Avatar from "@src/components/profile/avatar";
 import Input from "@src/components/form/input";
 import SubmitButton from "@src/components/form/submitButton";
 import ValidationText from "@src/components/form/validationText";
@@ -124,7 +124,15 @@ const EditPofile: NextPage = () => {
   }, [data]);
 
   return (
-    <Layout seoTitle="회원정보" hasBackBtn={true} removeNavbar={true}>
+    <Layout
+      seoTitle="회원정보"
+      depthAppbarLeft={true}
+      depthAppbarRight={true}
+      depthAppbarTitle="User Information"
+      backIcon={true}
+      depthAppbar={true}
+      removeNavbar={true}
+    >
       <Body>
         {/* 사용자 현재 아바타 */}
         <div className="flex justify-center pt-10 pb-7 shadow-md">
@@ -212,12 +220,18 @@ const EditPofile: NextPage = () => {
             <div className="text-white mb-2 text-2xl">{user?.nickname}</div>
             <div className="text-white text-lg">{user?.email}</div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-2">
             <span className="text-gray-400 text-sm inline-block">가입일</span>
-            <span className="text-gray-400 text-sm inline-block mx-3">|</span>
+            <span className="text-gray-400 text-sm inline-block mx-2">|</span>
             <span className="text-gray-400 text-sm">
               {changeDateForm(user?.createdAt as Date)}
             </span>
+          </div>
+          <div className="flex justify-center">
+            <span className="text-gray-500 text-xs mr-2 tracking-tighter">
+              {changeDateForm(user?.updatedAt as Date)}
+            </span>
+            <span className="text-gray-500 text-xs inline-block">정보 업데이트</span>
           </div>
         </div>
 

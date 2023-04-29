@@ -16,7 +16,7 @@ export const changeDateForm = (data:Date) => {
   const month = String(dateData.getMonth()).padStart(2,"0");
   const date = String(dateData.getDate()).padStart(2,"0");
 
-  return `${year}-${month}-${date}`;
+  return `${year}. ${month}. ${date}`;
 }
 
 export const calcDateFromNow = (data:Date) => {
