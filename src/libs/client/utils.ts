@@ -43,3 +43,20 @@ export const calcDateFromNow = (data:Date) => {
   }
   return "방금 전";
 }
+
+export const editYoutubeUrl = (url:string) => {
+  const inputUrl = url;
+  let resultUrl;
+  let youtubeKey;
+
+  if(inputUrl.includes("embed")){
+    resultUrl = url;
+
+   return resultUrl;
+  }
+
+  youtubeKey = inputUrl.slice(-11);
+  resultUrl = `https://www.youtube.com/embed/${youtubeKey}`;
+
+  return resultUrl;
+}
