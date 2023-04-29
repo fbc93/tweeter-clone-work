@@ -1,5 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
+export interface ResponseType {
+  ok: boolean;
+  [key: string]: any;
+}
+
 type method = "GET" | "POST" | "DELETE";
 
 interface ConfigType {
