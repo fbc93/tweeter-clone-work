@@ -10,9 +10,9 @@ const Logo = ({ link }: { link: string }) => {
         width={25}
         height={25}
         alt="logo"
-        className="shadow-lg"
+        className="shadow-lg mr-2"
       />
-      <span className="font-Pacifico text-lg text-white drop-shadow-lg inline-block">ShareMovie</span>
+      <span className="font-Pacifico text-2xl text-white drop-shadow-lg inline-block">ShareMovie</span>
     </Link>
   );
 }

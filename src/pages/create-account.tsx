@@ -91,7 +91,7 @@ const CreateAccount: NextPage = () => {
           {data?.errors?.length == 1 && data?.errors[0].type === "nickname" && <ValidationText content={data?.errors[0].message} />}
 
         </div>
-        <SubmitButton content={isLoading ? "가입 중..." : "가입하기"} />
+        <SubmitButton content={isLoading ? "가입 중..." : "가입하기"} loading={isLoading} />
       </form>
       <div>
         <ContentBox
