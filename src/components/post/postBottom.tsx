@@ -63,7 +63,7 @@ const PostBottom = ({ likes, comments, views, shares, onClickLike, isLiked, repl
       {reply && (
         <div className="w-1/4 flex justify-end items-center cursor-pointer">
           <div className="text-sm">
-            <svg className="w-5 h-5 shadow-lg text-white/50" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg className="w-5 h-5 shadow-lg text-white/50" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"></path>
             </svg>
           </div>

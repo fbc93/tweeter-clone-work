@@ -62,6 +62,7 @@ const DepthAppBar = ({
               width={25}
               height={25}
               alt="logo"
+              priority={true}
               className="shadow-lg mr-2"
             />
           </div>
