@@ -3,19 +3,19 @@ import PostBottom from "./postBottom";
 import PostTop from "./postTop";
 
 interface CommentProps {
-  avatar: string;
-  author: string;
+  avatar?: string;
+  author?: string;
   createdAt: Date;
   content: string;
   likes: number;
 }
 
-const Comment = ({ avatar, author, createdAt, content, likes }: CommentProps) => {
+const CommentBox = ({ avatar, author, createdAt, content, likes }: CommentProps) => {
   return (
     <div className="flex flex-row justify-start border-b border-white/20 py-4 pr-4 last:border-none">
       <div className="w-1/5">
         <div className="w-11 h-11 bg-gray-600 rounded-full overflow-hidden shadow-lg">
-          {avatar.startsWith('avatar_') ? (
+          {avatar?.startsWith('avatar_') ? (
             <Image
               src={`/images/avatar/${avatar}.png`}
               blurDataURL={`/images/avatar/${author}.png`}
@@ -56,4 +56,4 @@ const Comment = ({ avatar, author, createdAt, content, likes }: CommentProps) =>
   );
 }
 
-export default Comment;
+export default CommentBox;

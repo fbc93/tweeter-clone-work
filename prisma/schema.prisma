@@ -12,29 +12,29 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
   password  String
-  nickname  String   @unique
-  avatar    String   @default("avatar_01")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  nickname  String    @unique
+  avatar    String    @default("avatar_01")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   posts     Post[]
   likes     Like[]
-  Reply     Reply[]
+  comments  Comment[]
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   content   String
-  image     String   @default("")
-  youtube   String   @default("")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  image     String    @default("")
+  youtube   String    @default("")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   authorId  Int
-  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   likes     Like[]
-  Reply     Reply[]
+  comments  Comment[]
 
   @@index([authorId])
 }
@@ -47,24 +47,21 @@ model Like {
   postId    Int
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  Reply     Reply[]
 
   @@index([userId])
   @@index([postId])
 }
 
-model Reply {
+model Comment {
   id        Int      @id @default(autoincrement())
+  content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    Int
   postId    Int
-  likeId    Int
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  likes     Like     @relation(fields: [likeId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([postId])
-  @@index([likeId])
 }

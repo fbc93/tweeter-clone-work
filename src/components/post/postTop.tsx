@@ -1,7 +1,7 @@
 import { calcDateFromNow } from "@src/libs/client/utils";
 
 interface PostTopProps {
-  author: string;
+  author?: string;
   createdAt: Date;
 }
 
