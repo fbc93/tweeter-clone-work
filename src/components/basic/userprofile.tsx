@@ -7,12 +7,10 @@ const UserProfile = ({ link }: { link: string }) => {
 
   const { user } = useUser();
 
-
-
   return (
     <Link href={link} className="w-9 h-9 rounded-full shadow-lg overflow-hidden">
       {user && (
-        user.avatar.startsWith('avatar_') ? (
+        user.avatar.startsWith('avatar_') && (
           <Image
             blurDataURL={`/images/avatar/${user.avatar}.png`}
             src={`/images/avatar/${user.avatar}.png`}
@@ -22,7 +20,10 @@ const UserProfile = ({ link }: { link: string }) => {
             alt="user profile"
             priority={true}
           />
-        ) : (
+        ))}
+
+      {user && (
+        !user.avatar.startsWith('avatar_') && (
           <Image
             blurDataURL={`https://imagedelivery.net/CjoAMvz9GcH3ptsdhIn6iw/${user.avatar}/avatar`}
             src={`https://imagedelivery.net/CjoAMvz9GcH3ptsdhIn6iw/${user.avatar}/avatar`}
@@ -32,8 +33,7 @@ const UserProfile = ({ link }: { link: string }) => {
             alt="user profile"
             priority={true}
           />
-        )
-      )};
+        ))}
     </Link>
   );
 }
