@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@public/images/logo.png";
 
 const Logo = ({ link }: { link: string }) => {
   return (
     <Link href={link} className="flex justify-center items-baseline">
       <Image
-        src={logo}
+        src="/images/logo.png"
         width={25}
         height={25}
         alt="logo"

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import DepthTitle from "./depthTitle";
-import logoImage from "@public/images/logo.png";
 import { useRouter } from "next/router";
 interface DepthAppBarProps {
   depthAppbarTitle?: string;
@@ -58,7 +57,7 @@ const DepthAppBar = ({
         {depthAppbarRight && (
           <div className="w-7 h-7">
             <Image
-              src={logoImage}
+              src="/images/logo.png"
               width={25}
               height={25}
               alt="logo"

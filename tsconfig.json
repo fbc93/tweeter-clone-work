@@ -28,12 +28,6 @@
       "@pages/*":[
         "pages/*"
       ],
-      "@public/*":[
-        "public/*"
-      ],
-      "@avatar/*":[
-        "public/images/avatar/*"
-      ],
     }
   },
   "include": [

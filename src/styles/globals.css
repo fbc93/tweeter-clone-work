@@ -4,7 +4,8 @@
 
 @font-face {
   font-family: 'Pacifico';
-  src: url('../../public/fonts/Pacifico-Regular.ttf');
+  src: url('/fonts/Pacifico-Regular.ttf');
+  font-display: block;
 }
 
 body {
