@@ -11,6 +11,7 @@ interface FeedItemProps {
   youtube?: string;
   createdAt: Date;
   likes: number;
+  comments: number;
 }
 
 const FeedItem = ({
@@ -20,31 +21,31 @@ const FeedItem = ({
   image,
   youtube,
   createdAt,
-  likes
+  likes,
+  comments
 }: FeedItemProps) => {
 
   return (
     <div className="flex flex-row justify-start border-b border-white/20 py-4 pr-4 last:border-none">
       <div className="w-1/5">
         <div className="w-11 h-11 bg-gray-600 rounded-full overflow-hidden shadow-lg">
-          {avatar.startsWith('avatar_') ? (
+          {avatar.startsWith('avatar_') && (
             <Image
               src={`/images/avatar/${avatar}.png`}
               blurDataURL={`/images/avatar/${author}.png`}
               width={48}
               height={48}
               className="h-full w-full"
-              priority={true}
               alt="basic profile"
             />
-          ) : (
+          )}
+          {!avatar.startsWith('avatar_') && (
             <Image
               src={`https://imagedelivery.net/CjoAMvz9GcH3ptsdhIn6iw/${avatar}/profile`}
               blurDataURL={`https://imagedelivery.net/CjoAMvz9GcH3ptsdhIn6iw/${avatar}/profile`}
               width={48}
               height={48}
               className="h-full w-full"
-              priority={true}
               alt="custom profile"
             />
           )}
@@ -63,7 +64,6 @@ const FeedItem = ({
               width={300}
               height={300}
               className="aspect-auto"
-              priority={true}
               alt="post appendix image"
             />
           </div>
@@ -78,7 +78,7 @@ const FeedItem = ({
         {/* 댓글, 좋아요, 공유 */}
         <div className="flex justify-between items-center mt-4">
           <PostBottom
-            comments={6}
+            comments={comments}
             views={19}
             likes={likes}
             shares={true}

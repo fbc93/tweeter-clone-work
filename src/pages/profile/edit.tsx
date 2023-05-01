@@ -141,7 +141,6 @@ const EditPofile: NextPage = () => {
           <div className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 w-[158px] h-[158px] overflow-hidden flex justify-center self-center items-center rounded-full">
             {user?.avatar === basicWatch("avatar") && customWatch("custom") === undefined && (
               <Image
-                priority={true}
                 width={150}
                 height={150}
                 src={basicWatch("avatar").startsWith('avatar_') ?
@@ -153,7 +152,6 @@ const EditPofile: NextPage = () => {
             )}
             {user?.avatar === basicWatch("avatar") && customWatch("custom") && customWatch("custom").length === 1 && (
               <Image
-                priority={true}
                 width={150}
                 height={150}
                 src={URL.createObjectURL(customWatch("custom")[0])}
@@ -163,7 +161,6 @@ const EditPofile: NextPage = () => {
             )}
             {user?.avatar === basicWatch("avatar") && customWatch("custom") && customWatch("custom").length === 0 && (
               <Image
-                priority={true}
                 width={150}
                 height={150}
                 src={basicWatch("avatar").startsWith('avatar_') ?
@@ -177,7 +174,6 @@ const EditPofile: NextPage = () => {
             {/* 현재 아바타와 다른 경우 */}
             {user?.avatar != basicWatch("avatar") && customWatch("custom") === undefined && (
               <Image
-                priority={true}
                 width={150}
                 height={150}
                 src={basicWatch("avatar").startsWith('avatar_') ?
@@ -189,7 +185,6 @@ const EditPofile: NextPage = () => {
             )}
             {user?.avatar != basicWatch("avatar") && customWatch("custom") && customWatch("custom").length === 1 && (
               <Image
-                priority={true}
                 width={150}
                 height={150}
                 src={URL.createObjectURL(customWatch("custom")[0])}
@@ -200,7 +195,6 @@ const EditPofile: NextPage = () => {
             {user?.avatar != basicWatch("avatar") && customWatch("custom") && customWatch("custom").length === 0 && (
               <div>
                 <Image
-                  priority={true}
                   width={150}
                   height={150}
                   src={basicWatch("avatar").startsWith('avatar_') ?

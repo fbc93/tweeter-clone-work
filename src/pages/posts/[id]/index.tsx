@@ -139,7 +139,6 @@ const PostDetail: NextPage = () => {
                     width={36}
                     height={36}
                     className="aspect-square"
-                    priority={true}
                     alt="author profile"
                   />
                 ) : (
@@ -149,7 +148,6 @@ const PostDetail: NextPage = () => {
                     width={36}
                     height={36}
                     className="aspect-square"
-                    priority={true}
                     alt="author profile"
                   />
                 )}
@@ -170,7 +168,6 @@ const PostDetail: NextPage = () => {
                   width={300}
                   height={300}
                   className="aspect-auto w-full h-auto"
-                  priority={true}
                   alt="post appendix image"
                 />
               </div>
@@ -228,24 +225,23 @@ const PostDetail: NextPage = () => {
             <label htmlFor="" className="cursor-pointer flex justify-center items-center text-sm">
               {/* 내 프로필 */}
               <div className="w-9 h-9 rounded-full shadow-lg overflow-hidden mr-2">
-                {user?.avatar.startsWith('avatar_') ? (
+                {user?.avatar.startsWith('avatar_') && (
                   <Image
                     blurDataURL={`/images/avatar/${user?.avatar}.png`}
                     src={`/images/avatar/${user?.avatar}.png`}
                     width={36}
                     height={36}
                     className="aspect-square"
-                    priority={true}
                     alt="author profile"
                   />
-                ) : (
+                )}
+                {!user?.avatar.startsWith('avatar_') && (
                   <Image
                     blurDataURL={`https://imagedelivery.net/CjoAMvz9GcH3ptsdhIn6iw/${user?.avatar}/avatar`}
                     src={`https://imagedelivery.net/CjoAMvz9GcH3ptsdhIn6iw/${user?.avatar}/avatar`}
                     width={36}
                     height={36}
                     className="aspect-square"
-                    priority={true}
                     alt="author profile"
                   />
                 )}

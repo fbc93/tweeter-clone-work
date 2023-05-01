@@ -18,7 +18,6 @@ const UserProfile = ({ link }: { link: string }) => {
             height={36}
             className="aspect-square"
             alt="user profile"
-            priority={true}
           />
         ))}
 
@@ -31,7 +30,6 @@ const UserProfile = ({ link }: { link: string }) => {
             height={36}
             className="aspect-square"
             alt="user profile"
-            priority={true}
           />
         ))}
     </Link>

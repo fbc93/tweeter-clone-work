@@ -10,7 +10,7 @@ const Logo = ({ link }: { link: string }) => {
         height={25}
         alt="logo"
         className="shadow-lg mr-2"
-        priority={true}
+        loading="eager"
       />
       <span className="font-Pacifico text-2xl text-white drop-shadow-lg inline-block">ShareMovie</span>
     </Link>
