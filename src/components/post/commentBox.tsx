@@ -14,7 +14,7 @@ interface CommentProps {
 
 const CommentBox = ({ avatar, author, createdAt, content, likes, onClickCommentLike, commentId }: CommentProps) => {
   return (
-    <div className="flex flex-row justify-start border-b border-white/20 py-4 pr-4">
+    <div className="flex flex-row justify-start border-b border-white/20 py-4 pl-2 pr-4 bg-white/10">
       <div className="w-1/5">
         <div className="w-11 h-11 bg-gray-600 rounded-full overflow-hidden shadow-lg">
           {avatar?.startsWith('avatar_') && (
@@ -43,17 +43,6 @@ const CommentBox = ({ avatar, author, createdAt, content, likes, onClickCommentL
         <PostTop author={author} createdAt={createdAt} />
         <div className="w-full hover:underline-offset-4">
           <p className="text-left text-sm tracking-tighter leading-5 font-thin">{content}</p>
-        </div>
-
-        {/* 댓글, 좋아요, 공유 */}
-        <div className="flex justify-end items-center mt-4">
-          <PostBottom
-            likes={likes}
-            reply={true}
-            comments={0}
-            commentId={commentId}
-            onClickCommentLike={onClickCommentLike}
-          />
         </div>
       </div>
     </div>

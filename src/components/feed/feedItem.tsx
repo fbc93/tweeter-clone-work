@@ -76,12 +76,10 @@ const FeedItem = ({
         )}
 
         {/* 댓글, 좋아요, 공유 */}
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex justify-end items-center mt-4 w-[100px] my-auto ml-auto mr-0">
           <PostBottom
             comments={comments}
-            views={19}
             likes={likes}
-            shares={false}
           />
         </div>
       </div>

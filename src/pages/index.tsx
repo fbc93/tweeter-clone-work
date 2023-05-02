@@ -46,7 +46,7 @@ const Home: NextPage = () => {
             <Link
               href={`/posts/${post.id}`}
               key={index}
-              className="block border-b border-white/20 last:border-none"
+              className="block border-b border-white/20"
             >
               <FeedItem
                 key={index}

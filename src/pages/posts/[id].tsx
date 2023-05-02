@@ -38,6 +38,7 @@ interface PostDetailData {
   _count: {
     likes: number;
     comments: number;
+    views: number;
   },
   comments: TestData[];
 }
@@ -63,7 +64,6 @@ const PostDetail: NextPage = () => {
 
   //GET
   const { data, mutate } = useSWR<postDetailResponse>((router.query.id ? `/api/posts/${router.query.id}` : null));
-
 
   // POST
   const [toggleLike] = useMutation(`/api/posts/${router.query.id}/likes`);
@@ -116,13 +116,8 @@ const PostDetail: NextPage = () => {
     );
   }
 
-  const onClickCommentLike = (data: any) => {
 
-    toggleLike({});
-    router.push(`/posts/${router.query.id}/?commentId=2`);
-  }
 
-  console.log(data)
 
 
   return (
@@ -191,14 +186,12 @@ const PostDetail: NextPage = () => {
 
             <div className="text-xs mt-4 text-left text-white/50">{data.post.createdAt + ""}</div>
             <div className="mt-4">
-              <div className="flex justify-between items-center border-b border-t border-white/20 py-4">
+              <div className="flex justify-end items-center border-b border-t border-white/20 py-4">
                 <PostBottom
                   comments={data.post._count.comments}
-                  views={11}
                   likes={data.post._count.likes}
                   onClickLike={onClickLike}
                   isLiked={data.isLiked}
-                  shares={false}
                 />
               </div>
             </div>
@@ -213,20 +206,9 @@ const PostDetail: NextPage = () => {
                   createdAt={item.createdAt}
                   content={item.content}
                   likes={12}
-                  onClickCommentLike={onClickCommentLike}
-                  commentId={0}
                 />
               ))}
             </div>
-
-            {/* 대댓글 */}
-            {/* <CommentReply
-              author="대댓글개발자"
-              avatar="avatar_05"
-              content="대댓글 테스트입니다."
-              Likes={14}
-              createdAt={new Date()}
-            /> */}
           </div>
         )}
 

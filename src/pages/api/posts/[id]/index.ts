@@ -29,6 +29,7 @@ const handler = async (req:NextApiRequest, res:NextApiResponse<ResponseType>) =>
             select:{
               likes:true,
               comments:true,
+              views:true,
             }
           },
 
@@ -49,9 +50,6 @@ const handler = async (req:NextApiRequest, res:NextApiResponse<ResponseType>) =>
         }
       });
 
-      //console.log(req)
-  
-      //console.log(post);
       const isLiked = Boolean(
         await client?.like.findFirst({
           where:{
