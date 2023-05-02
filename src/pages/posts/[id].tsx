@@ -62,7 +62,7 @@ const PostDetail: NextPage = () => {
   const router = useRouter();
 
   //GET
-  //const { data, mutate } = useSWR<postDetailResponse>((router.query.id ? `/api/posts/${router.query.id}` : null));
+  const { data, mutate } = useSWR<postDetailResponse>((`/api/posts/${router.query.id}`));
 
 
   // POST
@@ -122,7 +122,7 @@ const PostDetail: NextPage = () => {
   //   router.push(`/posts/${router.query.id}/?commentId=2`);
   // }
 
-  // console.log(data)
+  console.log(data)
 
 
   return (
