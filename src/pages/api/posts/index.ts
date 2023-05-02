@@ -20,6 +20,7 @@ const handler = async (req:NextApiRequest, res:NextApiResponse<ResponseType>) =>
         _count:{
           select:{
             likes:true,
+            comments:true,
           }
         }
       }

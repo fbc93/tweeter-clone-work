@@ -81,7 +81,7 @@ const FeedItem = ({
             comments={comments}
             views={19}
             likes={likes}
-            shares={true}
+            shares={false}
           />
         </div>
       </div>

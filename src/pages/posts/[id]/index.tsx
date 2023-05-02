@@ -37,6 +37,7 @@ interface PostDetailData {
   youtube?: string;
   _count: {
     likes: number;
+    comments: number;
   },
   comments: TestData[];
 }
@@ -115,6 +116,14 @@ const PostDetail: NextPage = () => {
     );
   }
 
+  const onClickCommentLike = (data: any) => {
+
+    toggleLike({});
+    router.push(`/posts/${router.query.id}/?commentId=2`);
+  }
+
+  console.log(data)
+
 
   return (
     <Layout
@@ -184,12 +193,12 @@ const PostDetail: NextPage = () => {
             <div className="mt-4">
               <div className="flex justify-between items-center border-b border-t border-white/20 py-4">
                 <PostBottom
-                  comments={12}
+                  comments={data.post._count.comments}
                   views={11}
                   likes={data.post._count.likes}
                   onClickLike={onClickLike}
                   isLiked={data.isLiked}
-                  shares={true}
+                  shares={false}
                 />
               </div>
             </div>
@@ -204,6 +213,8 @@ const PostDetail: NextPage = () => {
                   createdAt={item.createdAt}
                   content={item.content}
                   likes={12}
+                  onClickCommentLike={onClickCommentLike}
+                  commentId={0}
                 />
               ))}
             </div>

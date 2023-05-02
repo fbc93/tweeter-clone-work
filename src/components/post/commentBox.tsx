@@ -8,11 +8,13 @@ interface CommentProps {
   createdAt: Date;
   content: string;
   likes: number;
+  commentId?: number;
+  onClickCommentLike?: any;
 }
 
-const CommentBox = ({ avatar, author, createdAt, content, likes }: CommentProps) => {
+const CommentBox = ({ avatar, author, createdAt, content, likes, onClickCommentLike, commentId }: CommentProps) => {
   return (
-    <div className="flex flex-row justify-start border-b border-white/20 py-4 pr-4 last:border-none">
+    <div className="flex flex-row justify-start border-b border-white/20 py-4 pr-4">
       <div className="w-1/5">
         <div className="w-11 h-11 bg-gray-600 rounded-full overflow-hidden shadow-lg">
           {avatar?.startsWith('avatar_') && (
@@ -48,6 +50,9 @@ const CommentBox = ({ avatar, author, createdAt, content, likes }: CommentProps)
           <PostBottom
             likes={likes}
             reply={true}
+            comments={0}
+            commentId={commentId}
+            onClickCommentLike={onClickCommentLike}
           />
         </div>
       </div>

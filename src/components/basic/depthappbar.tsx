@@ -24,7 +24,7 @@ const DepthAppBar = ({
 }: DepthAppBarProps) => {
   const router = useRouter();
   const historyBack = () => {
-    window.history.back();
+    router.back();
   }
 
   const historyHome = () => {

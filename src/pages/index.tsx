@@ -12,6 +12,7 @@ interface AuthorData {
 
 interface CountData {
   likes: number;
+  comments: number;
 }
 interface PostData {
   id: number;
@@ -28,8 +29,10 @@ interface PostsResponse {
   posts: PostData[];
 }
 
+
 const Home: NextPage = () => {
   const { data } = useSWR<PostsResponse>("/api/posts");
+  //console.log(data)
 
   return (
     <Layout
@@ -54,6 +57,7 @@ const Home: NextPage = () => {
                 youtube={post?.youtube}
                 likes={post?._count.likes}
                 createdAt={post.createdAt}
+                comments={post?._count.comments}
               />
             </Link>
           ))}

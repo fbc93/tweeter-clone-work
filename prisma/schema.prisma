@@ -12,16 +12,17 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  password  String
-  nickname  String    @unique
-  avatar    String    @default("avatar_01")
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  posts     Post[]
-  likes     Like[]
-  comments  Comment[]
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  password    String
+  nickname    String        @unique
+  avatar      String        @default("avatar_01")
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  posts       Post[]
+  likes       Like[]
+  comments    Comment[]
+  commentLike CommentLike[]
 }
 
 model Post {
@@ -53,15 +54,29 @@ model Like {
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
+  id        Int           @id @default(autoincrement())
   content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   userId    Int
   postId    Int
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post          @relation(fields: [postId], references: [id], onDelete: Cascade)
+  likes     CommentLike[]
 
   @@index([userId])
   @@index([postId])
+}
+
+model CommentLike {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  commentId Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([commentId])
 }
