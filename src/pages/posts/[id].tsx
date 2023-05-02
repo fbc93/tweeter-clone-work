@@ -9,7 +9,6 @@ import YoutubePreviewBox from "@src/components/form/youtubePreviewBox";
 import useMutation from "@src/libs/client/useMutation";
 import useUser from "@src/libs/client/useUser";
 import PostBottom from "@src/components/post/postBottom";
-import CommentReply from "@src/components/post/commentReply";
 import CommentBox from "@src/components/post/commentBox";
 import { useForm } from "react-hook-form";
 import { calcDateFromNow } from "@src/libs/client/utils";
