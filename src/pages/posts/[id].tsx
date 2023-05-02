@@ -131,7 +131,7 @@ const PostDetail: NextPage = () => {
       removeNavbar={true}
     >
       <Body>
-        {data?.post && (
+        {data?.post ? (
           <div className="w-full box-border rounded-lg shadow-lg">
             <div className="flex flex-row items-center mb-2 mt-4">
               {/* 작성자 아바타 */}
@@ -205,11 +205,12 @@ const PostDetail: NextPage = () => {
                   author={item.user.nickname}
                   createdAt={item.createdAt}
                   content={item.content}
-                  likes={12}
                 />
               ))}
             </div>
           </div>
+        ) : (
+          <div className="text-white">loading...</div>
         )}
 
         {/* 댓글 업로드 Form */}
