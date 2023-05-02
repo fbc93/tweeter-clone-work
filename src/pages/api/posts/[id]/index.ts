@@ -2,6 +2,7 @@ import withApiSession from "@src/libs/server/withApiSession";
 import withHandler from "@src/libs/server/withHandler";
 import { NextApiRequest, NextApiResponse } from "next";
 import { ResponseType } from "../../users/create-account";
+import client from "@src/libs/server/client";
 
 
 const handler = async (req:NextApiRequest, res:NextApiResponse<ResponseType>) => {
